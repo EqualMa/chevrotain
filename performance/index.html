@@ -212,7 +212,34 @@
 
                     </div>
 
+                    <div class="dataRow Chevrotain-es6">
+
+                        <div class="benchName"><a rel="nofollow" href="https://github.com/SAP/chevrotain">Chevrotain</a>
+                        </div>
+                        <div class="benchRate">
+                            <div class="value">&nbsp;</div>
+                            <div class="delta">&nbsp;</div>
+                        </div>
+                        <div class="benchSpeed">&nbsp;</div>
+                        <div class="benchInclude"><input type="checkbox" checked=checked/></div>
+
+                    </div>
+
                     <div class="dataRow Chevrotain-PT">
+
+                        <div class="benchName"><a rel="nofollow"
+                                                  href="https://github.com/SAP/chevrotain">Chevrotain-PT</a>
+                        </div>
+                        <div class="benchRate">
+                            <div class="value">&nbsp;</div>
+                            <div class="delta">&nbsp;</div>
+                        </div>
+                        <div class="benchSpeed">&nbsp;</div>
+                        <div class="benchInclude"><input type="checkbox" checked=checked/></div>
+
+                    </div>
+
+                    <div class="dataRow Chevrotain-PT-es6">
 
                         <div class="benchName"><a rel="nofollow"
                                                   href="https://github.com/SAP/chevrotain">Chevrotain-PT</a>
@@ -528,11 +555,11 @@
         },
 
         "Chevrotain [es6]": function (suite) {
-            addTest(suite, 'Chevrotain [es6]', chevrotainFrame_es6.parse)
+            addTest(suite, 'Chevrotain-es6', chevrotainFrame_es6.parse)
         },
 
         "Chevrotain-PT [es6]": function (suite) {
-            addTest(suite, 'Chevrotain-PT [es6]', chevrotainFrame_cst_es6.parse)
+            addTest(suite, 'Chevrotain-PT-es6', chevrotainFrame_cst_es6.parse)
         },
 
         Jsonify: function (suite) {
