@@ -33,56 +33,54 @@ class ChevrotainJsonParser extends ChevrotainParser {
     constructor(options) {
         super(jsonTokens, options);
 
-        const $ = this;
-
-        $.RULE("json", function() {
-            $.OR([
-                { ALT: function() { $.SUBRULE($.object) } },
-                { ALT: function() { $.SUBRULE($.array) } }
+        this.RULE("json", () => {
+            this.OR([
+                { ALT: () => { this.SUBRULE(this.object) } },
+                { ALT: () => { this.SUBRULE(this.array) } }
             ]);
         });
 
-        $.RULE("object", function() {
-            $.CONSUME(LCurly);
-            $.OPTION(function() {
-                $.SUBRULE($.objectItem);
-                $.MANY(function() {
-                    $.CONSUME(Comma);
-                    $.SUBRULE2($.objectItem);
+        this.RULE("object", () => {
+            this.CONSUME(LCurly);
+            this.OPTION(() => {
+                this.SUBRULE(this.objectItem);
+                this.MANY(() => {
+                    this.CONSUME(Comma);
+                    this.SUBRULE2(this.objectItem);
                 });
             });
-            $.CONSUME(RCurly);
+            this.CONSUME(RCurly);
         });
 
-        $.RULE("objectItem", function() {
-            $.CONSUME(StringLiteral);
-            $.CONSUME(Colon);
-            $.SUBRULE($.value);
+        this.RULE("objectItem", () => {
+            this.CONSUME(StringLiteral);
+            this.CONSUME(Colon);
+            this.SUBRULE(this.value);
         });
 
-        $.RULE("array", function() {
-            $.CONSUME(LSquare);
-            $.OPTION(function() {
-                $.SUBRULE($.value);
-                $.MANY(function() {
-                    $.CONSUME(Comma);
-                    $.SUBRULE2($.value);
+        this.RULE("array", () => {
+            this.CONSUME(LSquare);
+            this.OPTION(() => {
+                this.SUBRULE(this.value);
+                this.MANY(() => {
+                    this.CONSUME(Comma);
+                    this.SUBRULE2(this.value);
                 });
             });
-            $.CONSUME(RSquare);
+            this.CONSUME(RSquare);
         });
 
-        $.RULE("value", function() {
+        this.RULE("value", () => {
             // Perf boost: https://github.com/SAP/chevrotain/blob/master/docs/faq.md#PERFORMANCE
             // See "Avoid reinitializing large arrays of alternatives." section
-            $.OR($.c1 || ($.c1 = [
-                { ALT: function() { $.CONSUME(StringLiteral) } },
-                { ALT: function() { $.CONSUME(NumberLiteral) } },
-                { ALT: function() { $.SUBRULE($.object) } },
-                { ALT: function() { $.SUBRULE($.array) } },
-                { ALT: function() { $.CONSUME(True) } },
-                { ALT: function() { $.CONSUME(False) } },
-                { ALT: function() { $.CONSUME(Null) } }
+            this.OR(this.c1 || (this.c1 = [
+                { ALT: () => { this.CONSUME(StringLiteral) } },
+                { ALT: () => { this.CONSUME(NumberLiteral) } },
+                { ALT: () => { this.SUBRULE(this.object) } },
+                { ALT: () => { this.SUBRULE(this.array) } },
+                { ALT: () => { this.CONSUME(True) } },
+                { ALT: () => { this.CONSUME(False) } },
+                { ALT: () => { this.CONSUME(Null) } }
             ]));
         });
 
