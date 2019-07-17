@@ -1,3 +1,4 @@
+'use strict';
 // ----------------- Lexer -----------------
 const Token = chevrotain.Token;
 const createToken = chevrotain.createToken;
