@@ -384,7 +384,9 @@
 
     var handBuiltFrame = includeTestIFrame("handbuilt", "./jsonParsers/handbuilt/handbuilt.html")
     var chevrotainFrame = includeTestIFrame("chevrotain", "./jsonParsers/chevrotain/chevrotain.html")
+    var chevrotainFrame_es6 = includeTestIFrame("chevrotain", "./jsonParsers/chevrotain/chevrotain_es6.html")
     var chevrotainFrame_cst = includeTestIFrame("chevrotain_cst", "./jsonParsers/chevrotain/chevrotain_cst.html")
+    var chevrotainFrame_cst_es6 = includeTestIFrame("chevrotain", "./jsonParsers/chevrotain/chevrotain_cst_es6.html")
     var antlrFrame = includeTestIFrame("antlr", "./jsonParsers/antlr/antlr.html")
     var antlrPtFrame = includeTestIFrame("antlr-PT", "./jsonParsers/antlr/antlr_pt.html")
     var jisonFrame = includeTestIFrame("jison", "./jsonParsers/jison/jison.html")
@@ -523,6 +525,14 @@
 
         "Chevrotain-PT": function (suite) {
             addTest(suite, 'Chevrotain-PT', chevrotainFrame_cst.parse)
+        },
+
+        "Chevrotain [es6]": function (suite) {
+            addTest(suite, 'Chevrotain [es6]', chevrotainFrame_es6.parse)
+        },
+
+        "Chevrotain-PT [es6]": function (suite) {
+            addTest(suite, 'Chevrotain-PT [es6]', chevrotainFrame_cst_es6.parse)
         },
 
         Jsonify: function (suite) {
